@@ -46,6 +46,11 @@ import org.springframework.samples.petclinic.model.Person;
 @Table(name = "owners")
 public class Owner extends Person {
 
+
+    @Column(name = "age")
+    @NotEmpty
+    private int age;
+
 	@Column(name = "address")
 	@NotEmpty
 	private String address;
@@ -62,7 +67,17 @@ public class Owner extends Person {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
 	private Set<Pet> pets;
 
-	public String getAddress() {
+    public int getAge() {
+        return this.age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+
+
+    public String getAddress() {
 		return this.address;
 	}
 
